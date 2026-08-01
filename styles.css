@@ -14,7 +14,28 @@ body {
 }
 
 h1 {
-    color: #ffffff;
+    color: #000000;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
-yo hago index y tu css?
+.menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px 20px;
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+}
+
+.menu a {
+    color: #540c4e;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
