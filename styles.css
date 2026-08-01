@@ -1,41 +1,195 @@
+:root {
+    --lacquer: #7A2331;
+    --lacquer-deep: #591622;
+    --achiote: #ff8c00;
+    --jade: #ff9900;
+    --paper: #F3E8D8;
+    --ink: #241511;
+
+    --font-display: "Fraunces", serif;
+    --font-body: "Work Sans", sans-serif;
+    --font-mono: "IBM Plex Mono", monospace;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     min-height: 100vh;
-    background: linear-gradient(180deg, #ff94b8 0%, #ffcc8f 50%, #8be4ff 100%);
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--lacquer);
+    background-image:
+        radial-gradient(circle at 20% 20%, rgba(243, 232, 216, 0.05) 0, rgba(243, 232, 216, 0.05) 2px, transparent 3px),
+        radial-gradient(circle at 60% 70%, rgba(243, 232, 216, 0.05) 0, rgba(243, 232, 216, 0.05) 2px, transparent 3px),
+        linear-gradient(160deg, var(--lacquer) 0%, var(--lacquer-deep) 100%);
+    background-size: 60px 60px, 80px 80px, cover;
+    font-family: var(--font-body);
+    color: var(--paper);
+    overflow-x: hidden;
+}
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 24px 40px;
+    z-index: 10;
 }
 
-h1 {
-    color: #000000;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-.menu {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 15px;
-    background: rgba(255, 255, 255, 0.2);
-    padding: 10px 20px;
-    border-radius: 12px;
-    backdrop-filter: blur(6px);
-}
-
-.menu a {
-    color: #540c4e;
-    text-decoration: none;
-    font-weight: bold;
+.logo {
+    font-family: var(--font-mono);
     font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--paper);
 }
 
-.menu a:hover {
-    text-decoration: underline;
+.nav-links {
+    display: flex;
+    gap: 28px;
+}
+
+.nav-links a {
+    color: var(--paper);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.85;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a:hover {
+    opacity: 1;
+    color: var(--achiote);
+}
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 140px 10vw 100px;
+    max-width: 900px;
+}
+
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--achiote);
+    margin-bottom: 18px;
+}
+
+.eyebrow span {
+    color: var(--jade);
+}
+
+.wordmark {
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 40, "opsz" 100;
+    font-weight: 600;
+    font-size: clamp(3.5rem, 11vw, 8.5rem);
+    line-height: 0.95;
+    color: var(--paper);
+    letter-spacing: -0.02em;
+}
+
+.tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+    color: var(--paper);
+    margin-top: 20px;
+    max-width: 560px;
+}
+
+.subcopy {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(255, 98, 0, 0.75);
+    margin-top: 14px;
+    max-width: 460px;
+}
+
+.cta {
+    display: inline-block;
+    margin-top: 36px;
+    padding: 14px 32px;
+    background: var(--achiote);
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 999px;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.cta:hover {
+    background: var(--paper);
+    transform: translateY(-2px);
+}
+
+.signature {
+    position: absolute;
+    right: 6vw;
+    bottom: 8vh;
+    width: min(28vw, 300px);
+    height: auto;
+    opacity: 0.95;
+}
+
+.steam {
+    transform-origin: center;
+    animation: rise 3s ease-in-out infinite;
+}
+
+.steam-2 {
+    animation-delay: 0.4s;
+}
+
+.steam-3 {
+    animation-delay: 0.8s;
+}
+
+@keyframes rise {
+    0%, 100% { transform: translateY(0); opacity: 0.9; }
+    50% { transform: translateY(-6px); opacity: 0.4; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .steam { animation: none; }
+}
+
+@media (max-width: 720px) {
+    .nav {
+        padding: 20px 24px;
+    }
+
+    .nav-links {
+        gap: 16px;
+    }
+
+    .hero {
+        padding: 120px 8vw 80px;
+    }
+
+    .signature {
+        position: static;
+        margin-top: 40px;
+        width: 60vw;
+    }
 }
