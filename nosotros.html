@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros — Menumi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="paper-body">
+
+    <nav class="nav nav-dark">
+        <a href="index.html" class="logo">menumi</a>
+        <div class="nav-links">
+            <a href="index.html">Inicio</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="#">Contacto</a>
+        </div>
+    </nav>
+
+    <section class="about about-page" id="nosotros">
+        <div class="about-grid">
+            <div class="about-text">
+                <span class="eyebrow eyebrow-dark">NUESTRA HISTORIA</span>
+                <h2 class="about-heading">De la cocina de la abuela, al wok.</h2>
+
+                <p>Menumi nació en una cocina compartida: la de una abuela paisa que hacía sancocho los domingos, y la de un chef que aprendió a cortar cebolla al estilo cantonés en cocinas de barrio. Un día decidieron cocinar juntos.</p>
+
+                <p>El resultado no es fusión de laboratorio. Es lo que pasa cuando dos formas de cocinar se sientan a la misma mesa: el achiote se encuentra con el jengibre, el plátano con el bok choy, y nadie tiene que elegir un solo lado.</p>
+
+                <blockquote class="pull-quote">
+                    “No mezclamos culturas. Las sentamos a comer juntas.”
+                </blockquote>
+            </div>
+
+            <svg class="seal" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="110" cy="110" r="95" fill="none" stroke="#E8672B" stroke-width="2"/>
+                <circle cx="110" cy="110" r="80" fill="none" stroke="#E8672B" stroke-width="1"/>
+
+                <path id="sealArc" d="M 30 110 A 80 80 0 0 1 190 110" fill="none"/>
+                <text font-family="IBM Plex Mono, monospace" font-size="13" letter-spacing="3" fill="#E8672B" text-anchor="middle">
+                    <textPath href="#sealArc" startOffset="50%">MENUMI · BOGOTÁ</textPath>
+                </text>
+
+                <circle cx="110" cy="110" r="46" fill="#E8672B" stroke="#241511" stroke-width="3"/>
+
+                <clipPath id="leftClip">
+                    <rect x="64" y="64" width="46" height="92"/>
+                </clipPath>
+                <clipPath id="rightClip">
+                    <rect x="110" y="64" width="46" height="92"/>
+                </clipPath>
+
+                <!-- sancocho: mazorca -->
+                <g clip-path="url(#leftClip)">
+                    <rect x="96" y="88" width="16" height="44" rx="8" fill="#F3E8D8" stroke="#241511" stroke-width="2"/>
+                    <g stroke="#241511" stroke-width="1.2" opacity="0.6">
+                        <line x1="96" y1="96" x2="112" y2="96"/>
+                        <line x1="96" y1="104" x2="112" y2="104"/>
+                        <line x1="96" y1="112" x2="112" y2="112"/>
+                        <line x1="96" y1="120" x2="112" y2="120"/>
+                        <line x1="104" y1="88" x2="104" y2="132"/>
+                    </g>
+                </g>
+
+                <!-- ramen: tazón -->
+                <g clip-path="url(#rightClip)">
+                    <path d="M96 118 Q110 138 124 118 L121 128 Q110 140 99 128 Z" fill="#F3E8D8" stroke="#241511" stroke-width="2"/>
+                    <path d="M100 116 Q110 122 120 116" fill="none" stroke="#241511" stroke-width="1.4" opacity="0.6"/>
+                    <path d="M101 90 C 98 84, 104 80, 101 74" fill="none" stroke="#F3E8D8" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M112 90 C 109 84, 115 80, 112 74" fill="none" stroke="#F3E8D8" stroke-width="2" stroke-linecap="round"/>
+                </g>
+
+                <line x1="110" y1="66" x2="110" y2="154" stroke="#241511" stroke-width="2" opacity="0.5"/>
+            </svg>
+        </div>
+    </section>
+
+    <section class="why">
+        <div class="why-inner">
+            <span class="eyebrow eyebrow-dark">EL NOMBRE</span>
+            <h3 class="why-heading">¿Por qué Menumi?</h3>
+            <p class="why-text">Nació de una casualidad feliz: <strong>"mi"</strong> es como se le dice a los fideos en gran parte de Asia — mie, mee, mi — y también es como decimos <strong>"mío"</strong> en español. Menumi es, literal y sabroso, nuestro menú. Con fideos incluidos.</p>
+
+            <div class="why-grid">
+                <div class="why-item">
+                    <span class="why-number">01</span>
+                    <strong>Recetas de casa, no de manual</strong>
+                    <p>Cada plato parte de una receta real de familia, no de una tendencia de redes sociales.</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-number">02</span>
+                    <strong>Un mercado, dos despensas</strong>
+                    <p>El plátano y el bok choy comparten nevera. El achiote y el jengibre, la misma sartén.</p>
+                </div>
+                <div class="why-item">
+                    <span class="why-number">03</span>
+                    <strong>Fusión con criterio</strong>
+                    <p>Mezclamos lo que tiene sentido en el plato, no lo que se ve bien en una foto.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

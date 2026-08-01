@@ -1,8 +1,8 @@
 :root {
     --lacquer: #7A2331;
     --lacquer-deep: #591622;
-    --achiote: #ff8c00;
-    --jade: #ff9900;
+    --achiote: #E8672B;
+    --jade: #2F6B4F;
     --paper: #F3E8D8;
     --ink: #241511;
 
@@ -34,6 +34,7 @@ body {
     overflow-x: hidden;
 }
 
+/* NAV */
 .nav {
     position: fixed;
     top: 0;
@@ -73,6 +74,7 @@ body {
     color: var(--achiote);
 }
 
+/* HERO */
 .hero {
     position: relative;
     min-height: 100vh;
@@ -120,7 +122,7 @@ body {
 .subcopy {
     font-size: 16px;
     line-height: 1.6;
-    color: rgba(255, 98, 0, 0.75);
+    color: rgba(243, 232, 216, 0.75);
     margin-top: 14px;
     max-width: 460px;
 }
@@ -143,6 +145,7 @@ body {
     transform: translateY(-2px);
 }
 
+/* SIGNATURE SVG */
 .signature {
     position: absolute;
     right: 6vw;
@@ -174,6 +177,151 @@ body {
     .steam { animation: none; }
 }
 
+/* NAV variante clara (para páginas sobre fondo papel) */
+.nav-dark .logo,
+.nav-dark .nav-links a {
+    color: var(--ink);
+}
+
+.nav-dark .nav-links a:hover {
+    color: var(--achiote);
+}
+
+.paper-body {
+    background: var(--paper);
+    background-image: none;
+}
+
+.about-page {
+    padding-top: 160px;
+}
+
+/* NOSOTROS */
+.about {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 120px 10vw;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 80px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.eyebrow-dark {
+    color: var(--jade);
+}
+
+.about-heading {
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 30, "opsz" 60;
+    font-weight: 600;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    line-height: 1.1;
+    color: var(--ink);
+    margin: 14px 0 28px;
+    max-width: 12ch;
+}
+
+.about-text p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(36, 21, 17, 0.8);
+    max-width: 52ch;
+    margin-bottom: 18px;
+}
+
+.pull-quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    color: var(--lacquer);
+    border-left: 3px solid var(--achiote);
+    padding-left: 22px;
+    margin: 32px 0 0;
+    max-width: 40ch;
+}
+
+.seal {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    justify-self: center;
+    filter: drop-shadow(0 6px 14px rgba(36, 21, 17, 0.15));
+}
+
+/* POR QUÉ MENUMI */
+.why {
+    background: var(--paper);
+    padding: 0 10vw 120px;
+}
+
+.why-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(36, 21, 17, 0.15);
+    padding-top: 64px;
+}
+
+.why-heading {
+    font-family: var(--font-display);
+    font-variation-settings: "SOFT" 30, "opsz" 60;
+    font-weight: 600;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    color: var(--ink);
+    margin: 12px 0 20px;
+}
+
+.why-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(36, 21, 17, 0.8);
+    max-width: 65ch;
+}
+
+.why-text strong {
+    color: var(--lacquer);
+}
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 56px;
+}
+
+.why-item {
+    border-top: 3px solid var(--achiote);
+    padding-top: 18px;
+}
+
+.why-number {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--jade);
+    margin-bottom: 10px;
+}
+
+.why-item strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin-bottom: 8px;
+}
+
+.why-item p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(36, 21, 17, 0.75);
+}
+
 @media (max-width: 720px) {
     .nav {
         padding: 20px 24px;
@@ -191,5 +339,29 @@ body {
         position: static;
         margin-top: 40px;
         width: 60vw;
+    }
+
+    .about {
+        padding: 80px 8vw;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        text-align: left;
+    }
+
+    .seal {
+        max-width: 180px;
+        justify-self: start;
+    }
+
+    .why {
+        padding: 0 8vw 80px;
+    }
+
+    .why-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
     }
 }
