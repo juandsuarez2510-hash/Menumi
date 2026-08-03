@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const cart = [];
+    let cart = [];
 
     const cartCountEl = document.getElementById('cartCount');
     const cartPanel = document.getElementById('cartPanel');
     const cartItemsEl = document.getElementById('cartItems');
     const cartTotalEl = document.getElementById('cartTotal');
     const cartToggle = document.getElementById('cartToggle');
+    const cartClearBtn = document.getElementById('cartClear');
     const waLink = document.getElementById('waOrderLink');
 
     // Si esta página no tiene carrito (ej. Inicio o Nosotros), no hace nada más.
@@ -24,11 +25,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let total = 0;
-        cart.forEach((item) => {
+        cart.forEach((item, index) => {
             total += item.price;
             const row = document.createElement('div');
             row.className = 'cart-row';
-            row.innerHTML = `<span>${item.name}</span><span>${formatCOP(item.price)}</span>`;
+            row.innerHTML = `
+                <div class="cart-row-info">
+                    <span class="cart-row-name">${item.name}</span>
+                    <span class="cart-row-price">${formatCOP(item.price)}</span>
+                </div>
+                <button class="cart-row-remove" data-index="${index}" aria-label="Quitar ${item.name}">×</button>
+            `;
             cartItemsEl.appendChild(row);
         });
 
@@ -39,6 +46,15 @@ document.addEventListener('DOMContentLoaded', () => {
             ? `Hola Menumi, quiero pedir:%0A${lines}%0A%0ATotal: ${formatCOP(total)}`
             : 'Hola Menumi, quiero hacer un pedido.';
         waLink.href = `https://wa.me/573133971638?text=${message}`;
+
+        // Botones de quitar producto individual
+        cartItemsEl.querySelectorAll('.cart-row-remove').forEach((removeBtn) => {
+            removeBtn.addEventListener('click', () => {
+                const idx = parseInt(removeBtn.dataset.index, 10);
+                cart.splice(idx, 1);
+                renderCart();
+            });
+        });
     }
 
     document.querySelectorAll('.dish-add').forEach((btn) => {
@@ -59,6 +75,13 @@ document.addEventListener('DOMContentLoaded', () => {
     cartToggle.addEventListener('click', () => {
         cartPanel.classList.toggle('open');
     });
+
+    if (cartClearBtn) {
+        cartClearBtn.addEventListener('click', () => {
+            cart = [];
+            renderCart();
+        });
+    }
 
     renderCart();
 });
