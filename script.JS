@@ -9,79 +9,106 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartClearBtn = document.getElementById('cartClear');
     const waLink = document.getElementById('waOrderLink');
 
-    // Si esta página no tiene carrito (ej. Inicio o Nosotros), no hace nada más.
-    if (!cartToggle) return;
-
-    function formatCOP(n) {
-        return '$' + n.toLocaleString('es-CO');
-    }
-
-    function renderCart() {
-        cartCountEl.textContent = cart.length;
-        cartItemsEl.innerHTML = '';
-
-        if (cart.length === 0) {
-            cartItemsEl.innerHTML = '<p class="cart-empty">Aún no has agregado nada.</p>';
+    
+    if (cartToggle) {
+        function formatCOP(n) {
+            return '$' + n.toLocaleString('es-CO');
         }
 
-        let total = 0;
-        cart.forEach((item, index) => {
-            total += item.price;
-            const row = document.createElement('div');
-            row.className = 'cart-row';
-            row.innerHTML = `
-                <div class="cart-row-info">
-                    <span class="cart-row-name">${item.name}</span>
-                    <span class="cart-row-price">${formatCOP(item.price)}</span>
-                </div>
-                <button class="cart-row-remove" data-index="${index}" aria-label="Quitar ${item.name}">×</button>
-            `;
-            cartItemsEl.appendChild(row);
-        });
+        function renderCart() {
+            cartCountEl.textContent = cart.length;
+            cartItemsEl.innerHTML = '';
 
-        cartTotalEl.textContent = formatCOP(total);
+            if (cart.length === 0) {
+                cartItemsEl.innerHTML = '<p class="cart-empty">Aún no has agregado nada.</p>';
+            }
 
-        const lines = cart.map((i) => `- ${i.name} (${formatCOP(i.price)})`).join('%0A');
-        const message = cart.length
-            ? `Hola Menumi, quiero pedir:%0A${lines}%0A%0ATotal: ${formatCOP(total)}`
-            : 'Hola Menumi, quiero hacer un pedido.';
-        waLink.href = `https://wa.me/573133971638?text=${message}`;
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                const row = document.createElement('div');
+                row.className = 'cart-row';
+                row.innerHTML = `
+                    <div class="cart-row-info">
+                        <span class="cart-row-name">${item.name}</span>
+                        <span class="cart-row-price">${formatCOP(item.price)}</span>
+                    </div>
+                    <button class="cart-row-remove" data-index="${index}" aria-label="Quitar ${item.name}">×</button>
+                `;
+                cartItemsEl.appendChild(row);
+            });
 
-        // Botones de quitar producto individual
-        cartItemsEl.querySelectorAll('.cart-row-remove').forEach((removeBtn) => {
-            removeBtn.addEventListener('click', () => {
-                const idx = parseInt(removeBtn.dataset.index, 10);
-                cart.splice(idx, 1);
+            cartTotalEl.textContent = formatCOP(total);
+
+            const lines = cart.map((i) => `- ${i.name} (${formatCOP(i.price)})`).join('%0A');
+            const message = cart.length
+                ? `Hola Menumi, quiero pedir:%0A${lines}%0A%0ATotal: ${formatCOP(total)}`
+                : 'Hola Menumi, quiero hacer un pedido.';
+            waLink.href = `https://wa.me/573133971638?text=${message}`;
+
+           
+            cartItemsEl.querySelectorAll('.cart-row-remove').forEach((removeBtn) => {
+                removeBtn.addEventListener('click', () => {
+                    const idx = parseInt(removeBtn.dataset.index, 10);
+                    cart.splice(idx, 1);
+                    renderCart();
+                });
+            });
+        }
+
+        document.querySelectorAll('.dish-add').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const name = btn.dataset.item;
+                const price = parseInt(btn.dataset.price, 10);
+                cart.push({ name, price });
                 renderCart();
+
+                const originalText = btn.textContent;
+                btn.textContent = 'Agregado ✓';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 900);
             });
         });
+
+        cartToggle.addEventListener('click', () => {
+            cartPanel.classList.toggle('open');
+        });
+
+        if (cartClearBtn) {
+            cartClearBtn.addEventListener('click', () => {
+                cart = [];
+                renderCart();
+            });
+        }
+
+        renderCart();
     }
 
-    document.querySelectorAll('.dish-add').forEach((btn) => {
-        btn.addEventListener('click', () => {
-            const name = btn.dataset.item;
-            const price = parseInt(btn.dataset.price, 10);
-            cart.push({ name, price });
-            renderCart();
+    
+    const dishes = document.querySelectorAll('.dish');
+    if (dishes.length) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                entry.target.classList.toggle('in-view', entry.isIntersecting);
+            });
+        }, { threshold: 0.15 });
 
-            const originalText = btn.textContent;
-            btn.textContent = 'Agregado ✓';
-            setTimeout(() => {
-                btn.textContent = originalText;
-            }, 900);
-        });
-    });
-
-    cartToggle.addEventListener('click', () => {
-        cartPanel.classList.toggle('open');
-    });
-
-    if (cartClearBtn) {
-        cartClearBtn.addEventListener('click', () => {
-            cart = [];
-            renderCart();
-        });
+        dishes.forEach((dish) => observer.observe(dish));
     }
 
-    renderCart();
+  
+    const heroPhoto = document.querySelector('.signature-photo');
+    if (heroPhoto) {
+        heroPhoto.addEventListener('click', (e) => {
+            if (e.target.closest('.sig-btn')) return;
+            heroPhoto.classList.toggle('is-open');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!heroPhoto.contains(e.target)) {
+                heroPhoto.classList.remove('is-open');
+            }
+        });
+    }
 });
