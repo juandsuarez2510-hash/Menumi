@@ -480,10 +480,14 @@ body {
 
 .signature-photo:hover .signature-overlay,
 .signature-photo:focus-within .signature-overlay,
+<<<<<<< HEAD
 .signature-photo.is-open .signature-overlay,
 .contact-photo:hover .signature-overlay,
 .contact-photo:focus-within .signature-overlay,
 .contact-photo.is-open .signature-overlay {
+=======
+.signature-photo.is-open .signature-overlay {
+>>>>>>> bde5e45ccb328648111a096d3412128eb7269e87
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
@@ -846,6 +850,7 @@ body {
     color: var(--paper);
 }
 
+<<<<<<< HEAD
 /* LOGO */
 .logo {
     display: flex;
@@ -869,6 +874,8 @@ body {
     margin-bottom: 20px;
 }
 
+=======
+>>>>>>> bde5e45ccb328648111a096d3412128eb7269e87
 /* CONTACTO */
 .contact-header {
     padding: 160px 10vw 40px;
@@ -950,9 +957,62 @@ body {
     margin-top: 12px;
 }
 
+<<<<<<< HEAD
 .contact-photo {
     width: 100%;
     box-shadow: 0 20px 44px rgba(36, 21, 17, 0.25);
+=======
+/* TICKET DECORATIVO */
+.contact-ticket {
+    position: relative;
+    background: #fbf3e7;
+    border: 1px dashed rgba(36, 21, 17, 0.3);
+    border-radius: 6px;
+    padding: 28px 26px 34px;
+    box-shadow: 0 10px 24px rgba(36, 21, 17, 0.12);
+    font-family: var(--font-mono);
+}
+
+.contact-ticket::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -9px;
+    height: 18px;
+    background:
+        linear-gradient(135deg, var(--paper) 50%, transparent 50%),
+        linear-gradient(45deg, var(--paper) 50%, transparent 50%);
+    background-size: 18px 18px;
+    background-position: 0 0, 9px 0;
+    background-repeat: repeat-x;
+}
+
+.ticket-label {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--jade);
+    margin-bottom: 18px;
+}
+
+.ticket-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--ink);
+    padding: 8px 0;
+    border-bottom: 1px dotted rgba(36, 21, 17, 0.2);
+}
+
+.ticket-footer {
+    display: block;
+    margin-top: 18px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: rgba(36, 21, 17, 0.5);
+    text-align: center;
+>>>>>>> bde5e45ccb328648111a096d3412128eb7269e87
 }
 
 /* RESPONSIVE */
@@ -972,7 +1032,11 @@ body {
     .signature {
         position: static;
         margin-top: 40px;
+<<<<<<< HEAD
         width: 82vw;
+=======
+        width: 72vw;
+>>>>>>> bde5e45ccb328648111a096d3412128eb7269e87
     }
 
     .about {
