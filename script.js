@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCart();
     }
 
-  
+    // Animación de aparición de las tarjetas del menú, cada vez que entran o salen de la vista
     const dishes = document.querySelectorAll('.dish');
     if (dishes.length) {
         const observer = new IntersectionObserver((entries) => {
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dishes.forEach((dish) => observer.observe(dish));
     }
 
-    
+    // Fotos interactivas (Inicio y Contacto): en celular (sin hover), un toque las abre y otro afuera las cierra
     const interactivePhotos = document.querySelectorAll('.signature-photo, .contact-photo');
     if (interactivePhotos.length) {
         interactivePhotos.forEach((photo) => {
