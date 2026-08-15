@@ -12,12 +12,12 @@
 <body class="paper-body">
 
     <nav class="nav nav-dark">
-        <a href="index.html" class="logo">menumi</a>
+        <a href="index.html" class="logo"><img src="icon-menumi.png" class="logo-icon" alt="Menumi">menumi</a>
         <div class="nav-links">
             <a href="index.html">Inicio</a>
             <a href="nosotros.html">Nosotros</a>
             <a href="menu.html">Menú</a>
-            <a href="#">Contacto</a>
+            <a href="contacto.html">Contacto</a>
         </div>
     </nav>
 
@@ -41,31 +41,37 @@
             <h2 class="category-title">Combos</h2>
             <div class="dish-grid">
                 <div class="dish">
-                    <div class="dish-head">
-                        <span class="dish-name">Combo Mecato Mixto</span>
-                        <span class="dish-leader"></span>
-                        <span class="dish-price">$20.000</span>
+                    <div class="dish-body">
+                        <div class="dish-head">
+                            <span class="dish-name">Combo Mecato Mixto</span>
+                            <span class="dish-leader"></span>
+                            <span class="dish-price">$20.000</span>
+                        </div>
+                        <p class="dish-desc">Empanaditas de kimchi + Lulada de yuzu.</p>
+                        <button class="dish-add" data-item="Combo Mecato Mixto" data-price="20000">Agregar +</button>
                     </div>
-                    <p class="dish-desc">Empanaditas de kimchi + Lulada de yuzu.</p>
-                    <button class="dish-add" data-item="Combo Mecato Mixto" data-price="20000">Agregar +</button>
                 </div>
                 <div class="dish">
-                    <div class="dish-head">
-                        <span class="dish-name">Combo Menumi Clásico</span>
-                        <span class="dish-leader"></span>
-                        <span class="dish-price">$42.000</span>
+                    <div class="dish-body">
+                        <div class="dish-head">
+                            <span class="dish-name">Combo Menumi Clásico</span>
+                            <span class="dish-leader"></span>
+                            <span class="dish-price">$42.000</span>
+                        </div>
+                        <p class="dish-desc">Sancocho ramen + Té de panela con jengibre + Buñuelo de sésamo.</p>
+                        <button class="dish-add" data-item="Combo Menumi Clásico" data-price="42000">Agregar +</button>
                     </div>
-                    <p class="dish-desc">Sancocho ramen + Té de panela con jengibre + Buñuelo de sésamo.</p>
-                    <button class="dish-add" data-item="Combo Menumi Clásico" data-price="42000">Agregar +</button>
                 </div>
                 <div class="dish">
-                    <div class="dish-head">
-                        <span class="dish-name">Combo Pareja</span>
-                        <span class="dish-leader"></span>
-                        <span class="dish-price">$68.000</span>
+                    <div class="dish-body">
+                        <div class="dish-head">
+                            <span class="dish-name">Combo Pareja</span>
+                            <span class="dish-leader"></span>
+                            <span class="dish-price">$68.000</span>
+                        </div>
+                        <p class="dish-desc">2 Patacón bao + 2 cervezas artesanales + Rollitos de aguacate y mango.</p>
+                        <button class="dish-add" data-item="Combo Pareja" data-price="68000">Agregar +</button>
                     </div>
-                    <p class="dish-desc">2 Patacón bao + 2 cervezas artesanales + Rollitos de aguacate y mango.</p>
-                    <button class="dish-add" data-item="Combo Pareja" data-price="68000">Agregar +</button>
                 </div>
             </div>
         </section>
@@ -74,31 +80,46 @@
             <h2 class="category-title">Para picar</h2>
             <div class="dish-grid">
                 <div class="dish">
-                    <div class="dish-head">
-                        <span class="dish-name">Empanaditas de kimchi</span>
-                        <span class="dish-leader"></span>
-                        <span class="dish-price">$14.000</span>
+                    <div class="dish-media">
+                        <img src="empanadas de kimchi.jpeg" alt="Empanaditas de kimchi" loading="lazy">
                     </div>
-                    <p class="dish-desc">Empanadas de maíz rellenas de kimchi y queso costeño.</p>
-                    <button class="dish-add" data-item="Empanaditas de kimchi" data-price="14000">Agregar +</button>
+                    <div class="dish-body">
+                        <div class="dish-head">
+                            <span class="dish-name">Empanaditas de kimchi</span>
+                            <span class="dish-leader"></span>
+                            <span class="dish-price">$14.000</span>
+                        </div>
+                        <p class="dish-desc">Empanadas de maíz rellenas de kimchi y queso costeño.</p>
+                        <button class="dish-add" data-item="Empanaditas de kimchi" data-price="14000">Agregar +</button>
+                    </div>
                 </div>
                 <div class="dish">
-                    <div class="dish-head">
-                        <span class="dish-name">Patacón bao</span>
-                        <span class="dish-leader"></span>
-                        <span class="dish-price">$18.500</span>
+                    <div class="dish-media">
+                        <img src="patacon bao.png" alt="Patacón bao" loading="lazy">
                     </div>
-                    <p class="dish-desc">Patacón crocante relleno de cerdo hoisin y cebolla encurtida.</p>
-                    <button class="dish-add" data-item="Patacón bao" data-price="18500">Agregar +</button>
+                    <div class="dish-body">
+                        <div class="dish-head">
+                            <span class="dish-name">Patacón bao</span>
+                            <span class="dish-leader"></span>
+                            <span class="dish-price">$18.500</span>
+                        </div>
+                        <p class="dish-desc">Patacón crocante relleno de cerdo hoisin y cebolla encurtida.</p>
+                        <button class="dish-add" data-item="Patacón bao" data-price="18500">Agregar +</button>
+                    </div>
                 </div>
                 <div class="dish">
-                    <div class="dish-head">
-                        <span class="dish-name">Rollitos de aguacate y mango</span>
-                        <span class="dish-leader"></span>
-                        <span class="dish-price">$16.000</span>
+                    <div class="dish-media">
+                        <img src="rollitos de aguacate y mango.png" alt="Rollitos de aguacate y mango" loading="lazy">
                     </div>
-                    <p class="dish-desc">Rollitos primavera de aguacate, mango verde y ají.</p>
-                    <button class="dish-add" data-item="Rollitos de aguacate y mango" data-price="16000">Agregar +</button>
+                    <div class="dish-body">
+                        <div class="dish-head">
+                            <span class="dish-name">Rollitos de aguacate y mango</span>
+                            <span class="dish-leader"></span>
+                            <span class="dish-price">$16.000</span>
+                        </div>
+                        <p class="dish-desc">Rollitos primavera de aguacate, mango verde y ají.</p>
+                        <button class="dish-add" data-item="Rollitos de aguacate y mango" data-price="16000">Agregar +</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -107,31 +128,46 @@
             <h2 class="category-title">Fuertes</h2>
             <div class="dish-grid">
                 <div class="dish">
-                    <div class="dish-head">
-                        <span class="dish-name">Sancocho ramen</span>
-                        <span class="dish-leader"></span>
-                        <span class="dish-price">$32.000</span>
+                    <div class="dish-media">
+                        <img src="sancocho ramen.png" alt="Sancocho ramen" loading="lazy">
                     </div>
-                    <p class="dish-desc">Caldo de sancocho con fideos ramen, mazorca y cilantro.</p>
-                    <button class="dish-add" data-item="Sancocho ramen" data-price="32000">Agregar +</button>
+                    <div class="dish-body">
+                        <div class="dish-head">
+                            <span class="dish-name">Sancocho ramen</span>
+                            <span class="dish-leader"></span>
+                            <span class="dish-price">$32.000</span>
+                        </div>
+                        <p class="dish-desc">Caldo de sancocho con fideos ramen, mazorca y cilantro.</p>
+                        <button class="dish-add" data-item="Sancocho ramen" data-price="32000">Agregar +</button>
+                    </div>
                 </div>
                 <div class="dish">
-                    <div class="dish-head">
-                        <span class="dish-name">Lechona bao bun</span>
-                        <span class="dish-leader"></span>
-                        <span class="dish-price">$28.000</span>
+                    <div class="dish-media">
+                        <img src="lechona bao bun.png" alt="Lechona bao bun" loading="lazy">
                     </div>
-                    <p class="dish-desc">Pan bao al vapor relleno de lechona y ensalada agria.</p>
-                    <button class="dish-add" data-item="Lechona bao bun" data-price="28000">Agregar +</button>
+                    <div class="dish-body">
+                        <div class="dish-head">
+                            <span class="dish-name">Lechona bao bun</span>
+                            <span class="dish-leader"></span>
+                            <span class="dish-price">$28.000</span>
+                        </div>
+                        <p class="dish-desc">Pan bao al vapor relleno de lechona y ensalada agria.</p>
+                        <button class="dish-add" data-item="Lechona bao bun" data-price="28000">Agregar +</button>
+                    </div>
                 </div>
                 <div class="dish">
-                    <div class="dish-head">
-                        <span class="dish-name">Pescado en salsa de tamarindo</span>
-                        <span class="dish-leader"></span>
-                        <span class="dish-price">$34.000</span>
+                    <div class="dish-media">
+                        <img src="pescado en salsa.png" alt="Pescado en salsa de tamarindo" loading="lazy">
                     </div>
-                    <p class="dish-desc">Pescado del día, salsa de tamarindo y arroz de coco.</p>
-                    <button class="dish-add" data-item="Pescado en salsa de tamarindo" data-price="34000">Agregar +</button>
+                    <div class="dish-body">
+                        <div class="dish-head">
+                            <span class="dish-name">Pescado en salsa de tamarindo</span>
+                            <span class="dish-leader"></span>
+                            <span class="dish-price">$34.000</span>
+                        </div>
+                        <p class="dish-desc">Pescado del día, salsa de tamarindo y arroz de coco.</p>
+                        <button class="dish-add" data-item="Pescado en salsa de tamarindo" data-price="34000">Agregar +</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -140,22 +176,32 @@
             <h2 class="category-title">Arroces y fideos</h2>
             <div class="dish-grid">
                 <div class="dish">
-                    <div class="dish-head">
-                        <span class="dish-name">Arroz chino paisa</span>
-                        <span class="dish-leader"></span>
-                        <span class="dish-price">$26.000</span>
+                    <div class="dish-media">
+                        <img src="arroz chino paisa.png" alt="Arroz chino paisa" loading="lazy">
                     </div>
-                    <p class="dish-desc">Arroz frito con chorizo, chicharrón y huevo.</p>
-                    <button class="dish-add" data-item="Arroz chino paisa" data-price="26000">Agregar +</button>
+                    <div class="dish-body">
+                        <div class="dish-head">
+                            <span class="dish-name">Arroz chino paisa</span>
+                            <span class="dish-leader"></span>
+                            <span class="dish-price">$26.000</span>
+                        </div>
+                        <p class="dish-desc">Arroz frito con chorizo, chicharrón y huevo.</p>
+                        <button class="dish-add" data-item="Arroz chino paisa" data-price="26000">Agregar +</button>
+                    </div>
                 </div>
                 <div class="dish">
-                    <div class="dish-head">
-                        <span class="dish-name">Fideos de plátano</span>
-                        <span class="dish-leader"></span>
-                        <span class="dish-price">$24.000</span>
+                    <div class="dish-media">
+                        <img src="fideos de platano.png" alt="Fideos de plátano" loading="lazy">
                     </div>
-                    <p class="dish-desc">Fideos de arroz salteados con plátano maduro y salsa de soya.</p>
-                    <button class="dish-add" data-item="Fideos de plátano" data-price="24000">Agregar +</button>
+                    <div class="dish-body">
+                        <div class="dish-head">
+                            <span class="dish-name">Fideos de plátano</span>
+                            <span class="dish-leader"></span>
+                            <span class="dish-price">$24.000</span>
+                        </div>
+                        <p class="dish-desc">Fideos de arroz salteados con plátano maduro y salsa de soya.</p>
+                        <button class="dish-add" data-item="Fideos de plátano" data-price="24000">Agregar +</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -164,22 +210,32 @@
             <h2 class="category-title">Dulce</h2>
             <div class="dish-grid">
                 <div class="dish">
-                    <div class="dish-head">
-                        <span class="dish-name">Arroz con leche brûlée</span>
-                        <span class="dish-leader"></span>
-                        <span class="dish-price">$12.000</span>
+                    <div class="dish-media">
+                        <img src="arroz con leche.png" alt="Arroz con leche brûlée" loading="lazy">
                     </div>
-                    <p class="dish-desc">Arroz con leche con costra de azúcar quemada, estilo crème brûlée.</p>
-                    <button class="dish-add" data-item="Arroz con leche brûlée" data-price="12000">Agregar +</button>
+                    <div class="dish-body">
+                        <div class="dish-head">
+                            <span class="dish-name">Arroz con leche brûlée</span>
+                            <span class="dish-leader"></span>
+                            <span class="dish-price">$12.000</span>
+                        </div>
+                        <p class="dish-desc">Arroz con leche con costra de azúcar quemada, estilo crème brûlée.</p>
+                        <button class="dish-add" data-item="Arroz con leche brûlée" data-price="12000">Agregar +</button>
+                    </div>
                 </div>
                 <div class="dish">
-                    <div class="dish-head">
-                        <span class="dish-name">Buñuelo de sésamo</span>
-                        <span class="dish-leader"></span>
-                        <span class="dish-price">$10.000</span>
+                    <div class="dish-media">
+                        <img src="buñuelo.png" alt="Buñuelo de sésamo" loading="lazy">
                     </div>
-                    <p class="dish-desc">Buñuelo relleno de dulce de leche, bañado en sésamo tostado.</p>
-                    <button class="dish-add" data-item="Buñuelo de sésamo" data-price="10000">Agregar +</button>
+                    <div class="dish-body">
+                        <div class="dish-head">
+                            <span class="dish-name">Buñuelo de sésamo</span>
+                            <span class="dish-leader"></span>
+                            <span class="dish-price">$10.000</span>
+                        </div>
+                        <p class="dish-desc">Buñuelo relleno de dulce de leche, bañado en sésamo tostado.</p>
+                        <button class="dish-add" data-item="Buñuelo de sésamo" data-price="10000">Agregar +</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -188,31 +244,46 @@
             <h2 class="category-title">Para tomar</h2>
             <div class="dish-grid">
                 <div class="dish">
-                    <div class="dish-head">
-                        <span class="dish-name">Lulada de yuzu</span>
-                        <span class="dish-leader"></span>
-                        <span class="dish-price">$9.000</span>
+                    <div class="dish-media corner-mask">
+                        <img src="lulada de yuzu.png" alt="Lulada de yuzu" loading="lazy">
                     </div>
-                    <p class="dish-desc">Lulo, yuzu y hierbabuena.</p>
-                    <button class="dish-add" data-item="Lulada de yuzu" data-price="9000">Agregar +</button>
+                    <div class="dish-body">
+                        <div class="dish-head">
+                            <span class="dish-name">Lulada de yuzu</span>
+                            <span class="dish-leader"></span>
+                            <span class="dish-price">$9.000</span>
+                        </div>
+                        <p class="dish-desc">Lulo, yuzu y hierbabuena.</p>
+                        <button class="dish-add" data-item="Lulada de yuzu" data-price="9000">Agregar +</button>
+                    </div>
                 </div>
                 <div class="dish">
-                    <div class="dish-head">
-                        <span class="dish-name">Té de panela con jengibre</span>
-                        <span class="dish-leader"></span>
-                        <span class="dish-price">$8.000</span>
+                    <div class="dish-media corner-mask">
+                        <img src="Te de panela.png" alt="Té de panela con jengibre" loading="lazy">
                     </div>
-                    <p class="dish-desc">Panela, jengibre y limón, caliente o frío.</p>
-                    <button class="dish-add" data-item="Té de panela con jengibre" data-price="8000">Agregar +</button>
+                    <div class="dish-body">
+                        <div class="dish-head">
+                            <span class="dish-name">Té de panela con jengibre</span>
+                            <span class="dish-leader"></span>
+                            <span class="dish-price">$8.000</span>
+                        </div>
+                        <p class="dish-desc">Panela, jengibre y limón, caliente o frío.</p>
+                        <button class="dish-add" data-item="Té de panela con jengibre" data-price="8000">Agregar +</button>
+                    </div>
                 </div>
                 <div class="dish">
-                    <div class="dish-head">
-                        <span class="dish-name">Cerveza artesanal</span>
-                        <span class="dish-leader"></span>
-                        <span class="dish-price">$12.000</span>
+                    <div class="dish-media corner-mask">
+                        <img src="cerveza casera.png" alt="Cerveza artesanal" loading="lazy">
                     </div>
-                    <p class="dish-desc">Rotación de cervecerías locales.</p>
-                    <button class="dish-add" data-item="Cerveza artesanal" data-price="12000">Agregar +</button>
+                    <div class="dish-body">
+                        <div class="dish-head">
+                            <span class="dish-name">Cerveza artesanal</span>
+                            <span class="dish-leader"></span>
+                            <span class="dish-price">$12.000</span>
+                        </div>
+                        <p class="dish-desc">Rotación de cervecerías locales.</p>
+                        <button class="dish-add" data-item="Cerveza artesanal" data-price="12000">Agregar +</button>
+                    </div>
                 </div>
             </div>
         </section>
