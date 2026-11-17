@@ -3,46 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menumi — Asiático-Colombiano</title>
+    <meta name="description" content="Menumi: cocina asiático-colombiana a domicilio en Bogotá. El wok se encuentra con el fogón.">
+    <meta name="theme-color" content="#f6efe5">
+    <title>Menumi — Cocina asiático-colombiana en Bogotá</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-
-    <nav class="nav">
-        <a href="index.html" class="logo"><img src="icon-menumi.png" class="logo-icon" alt="Menumi">menumi</a>
+<body class="home-body">
+    <nav class="nav home-nav" aria-label="Navegación principal">
+        <a href="index.html" class="logo"><img src="icon-menumi.png" class="logo-icon" alt="">menumi</a>
         <div class="nav-links">
-            <a href="#">Inicio</a>
+            <a href="index.html" aria-current="page">Inicio</a>
             <a href="nosotros.html">Nosotros</a>
             <a href="menu.html">Menú</a>
             <a href="contacto.html">Contacto</a>
         </div>
+        <a class="nav-order" href="https://wa.me/573133971638" target="_blank" rel="noopener">Pedir ahora <span aria-hidden="true">↗</span></a>
     </nav>
 
-    <main class="hero">
-        <span class="eyebrow">ASIA <span>×</span> COLOMBIA</span>
-
-        <h1 class="wordmark">Menumi</h1>
-        <p class="tagline">Donde el wok se sienta a la mesa con el fogón.</p>
-        <p class="subcopy">Cocina que mezcla el sazón colombiano con las técnicas de Asia, sin pedir permiso.</p>
-
-        <a href="menu.html" class="cta">Ver el menú</a>
-
-        <div class="signature signature-photo corner-mask">
-            <img src="Imginicioolla.png" alt="Olla de Menumi" loading="lazy">
-            <div class="signature-overlay">
-                <p class="signature-summary">Cocina asiático-colombiana, solo domicilios en Bogotá. El achiote se encuentra con el jengibre, sin pedir permiso.</p>
-                <div class="signature-actions">
-                    <a href="https://wa.me/573133971638" target="_blank" rel="noopener" class="sig-btn sig-btn-solid">WhatsApp</a>
-                    <a href="menu.html" class="sig-btn sig-btn-outline">Menú</a>
-                    <a href="nosotros.html" class="sig-btn sig-btn-outline">Nosotros</a>
+    <main>
+        <section class="home-hero">
+            <div class="hero-copy">
+                <span class="eyebrow home-eyebrow"><span class="status-dot"></span> COCINA DE AUTOR · BOGOTÁ</span>
+                <h1 class="wordmark">Dos cocinas.<br><em>Una mesa.</em></h1>
+                <p class="tagline">El wok se encuentra con el fogón.</p>
+                <p class="subcopy">Sabores de Asia y Colombia cocinados sin fronteras. Platos para descubrir, compartir y volver a pedir.</p>
+                <div class="hero-actions">
+                    <a href="menu.html" class="cta">Explorar el menú</a>
+                    <a href="https://wa.me/573133971638" target="_blank" rel="noopener" class="text-link">Pide por WhatsApp <span aria-hidden="true">↗</span></a>
+                </div>
+                <div class="hero-meta">
+                    <span class="hero-meta-mark">M</span>
+                    <span>Domicilios en Bogotá<br><strong>Hecho al momento, para ti.</strong></span>
                 </div>
             </div>
-        </div>
+
+            <div class="hero-visual">
+                <div class="hero-image-frame corner-mask">
+                    <img src="Imginicioolla.png" alt="Preparación de cocina de Menumi" fetchpriority="high">
+                </div>
+                <div class="image-caption"><span>01 / SABORES SIN FRONTERAS</span><span>BOGOTÁ, COLOMBIA</span></div>
+                <div class="hero-stamp" aria-hidden="true"><span>ASIA</span><b>×</b><span>COLOMBIA</span></div>
+            </div>
+            <a class="scroll-cue" href="#manifiesto"><span></span> DESCUBRE MENUMI</a>
+        </section>
+
+        <section class="manifesto" id="manifiesto">
+            <div class="manifesto-inner">
+                <span class="eyebrow eyebrow-dark">UNA FORMA DISTINTA DE COMER</span>
+                <p>El achiote se encuentra con el jengibre. El plátano comparte mesa con el bok choy. <em>Y cada plato cuenta algo nuevo.</em></p>
+                <a href="nosotros.html" class="manifesto-link">Conoce nuestra historia <span aria-hidden="true">→</span></a>
+            </div>
+        </section>
     </main>
 
+    <footer class="home-footer"><a href="index.html" class="footer-brand">menumi</a><span>Cocina asiático-colombiana · Bogotá</span><a href="contacto.html">Hablemos <span aria-hidden="true">↗</span></a></footer>
     <script src="script.js"></script>
 </body>
 </html>
