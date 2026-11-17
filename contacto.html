@@ -3,29 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6efe5">
+    <meta name="description" content="Pide Menumi a domicilio en Bogotá o escríbenos para resolver tus dudas.">
     <title>Contacto — Menumi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20261117">
 </head>
 <body class="paper-body">
 
-    <nav class="nav nav-dark">
-        <a href="index.html" class="logo"><img src="icon-menumi.png" class="logo-icon" alt="Menumi">menumi</a>
-        <div class="nav-links">
-            <a href="index.html">Inicio</a>
-            <a href="nosotros.html">Nosotros</a>
-            <a href="menu.html">Menú</a>
-            <a href="contacto.html">Contacto</a>
-        </div>
-    </nav>
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Menumi, inicio"><img src="icon-menumi.png" alt=""><span>menumi</span></a>
+        <nav class="site-nav" aria-label="Navegación principal"><a href="index.html">Inicio</a><a href="nosotros.html">Nosotros</a><a href="menu.html">Menú</a><a class="active" href="contacto.html">Contacto</a></nav>
+        <a class="header-order" href="https://wa.me/573133971638" target="_blank" rel="noopener">Pedir ahora <span>↗</span></a>
+    </header>
 
     <header class="contact-header">
         <span class="eyebrow eyebrow-dark">CONTACTO</span>
         <h1 class="contact-title">Hablemos</h1>
         <p class="contact-intro">Por ahora solo hacemos domicilios. Pero te leemos y te respondemos rápido.</p>
-        <p class="contact-intro">Menumi llega hasta la puerta de tu casa, sin límites: tú nos dices qué antojo tienes y lo tienes en minutos.</p>
+        <p class="contact-intro">Cuéntanos qué se te antoja y te ayudamos a llevar Menumi hasta tu puerta en Bogotá.</p>
     </header>
 
     <main class="contact-page">
@@ -48,22 +46,12 @@
                 <a href="https://wa.me/573133971638" class="btn-solid contact-cta" target="_blank" rel="noopener">Escribir por WhatsApp</a>
             </div>
 
-            <div class="contact-photo signature-photo corner-mask">
-                <img src="Contactanosmenumi.png" alt="Menumi" loading="lazy">
-                <div class="signature-overlay">
-                    <p class="signature-summary">Escríbenos para lo que necesites: pedir a domicilio, hacer una reserva, o resolver una duda por WhatsApp.</p>
-                    <div class="signature-actions">
-                        <a href="menu.html" class="sig-btn sig-btn-outline">Domicilios</a>
-                        <a href="https://wa.me/573133971638" target="_blank" rel="noopener" class="sig-btn sig-btn-solid">WhatsApp</a>
-                        <a href="https://wa.me/573133971638?text=Hola%20Menumi%2C%20quiero%20hacer%20una%20reserva" target="_blank" rel="noopener" class="sig-btn sig-btn-outline">Reservas</a>
-                        <a href="mailto:menumi.soporte@gmail.com" class="sig-btn sig-btn-outline">Correo</a>
-                    </div>
-                </div>
-            </div>
+            <figure class="contact-photo"><img src="Contactanosmenumi.png" alt="Menumi, cocina asiático-colombiana" loading="lazy"></figure>
 
         </div>
     </main>
 
-    <script src="script.js"></script>
+    <footer class="site-footer"><a class="brand footer-brand" href="index.html"><img src="icon-menumi.png" alt=""><span>menumi</span></a><span>Cocina asiático-colombiana · Bogotá</span><div><a href="menu.html">Explorar el menú</a><a href="https://wa.me/573133971638" target="_blank" rel="noopener">WhatsApp ↗</a><a class="footer-admin" href="admin.html">Administración</a></div></footer>
+    <script src="script.js" defer></script>
 </body>
 </html>

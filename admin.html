@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6efe5">
+  <title>Administración — Menumi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20261117">
+</head>
+<body class="admin-page">
+  <header class="admin-topbar">
+    <a class="brand" href="index.html"><img src="icon-menumi.png" alt=""><span>menumi</span></a>
+    <a class="admin-back" href="index.html">← Volver al sitio</a>
+  </header>
+
+  <main id="loginView" class="admin-login-wrap">
+    <section class="admin-login-art"><div><p class="eyebrow">ESPACIO DE ADMINISTRACIÓN</p><h1>La cocina<br><em>por dentro.</em></h1></div></section>
+    <section class="admin-login-card">
+      <form class="admin-login-form" id="loginForm" autocomplete="on">
+        <p class="eyebrow eyebrow-dark">ACCESO PRIVADO</p>
+        <h2>Bienvenido.</h2>
+        <p>Ingresa con tu cuenta de administración para ver los usuarios de Menumi.</p>
+        <div class="field"><label for="username">Usuario</label><input id="username" name="username" type="text" autocomplete="username" required placeholder="Tu nombre de usuario"></div>
+        <div class="field"><label for="password">Contraseña</label><input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Tu contraseña"></div>
+        <button class="button button-dark login-submit" type="submit">Entrar al panel <span>↗</span></button>
+        <p class="login-error" id="loginError" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <main id="dashboardView" class="admin-shell" hidden>
+    <aside class="admin-sidebar">
+      <p class="admin-sidebar-label">MENUMI ADMIN</p>
+      <a class="admin-side-link active" href="#overview"><span class="admin-side-icon">⌂</span> Resumen</a>
+      <a class="admin-side-link" href="#users"><span class="admin-side-icon">◎</span> Usuarios</a>
+      <a class="admin-side-link" href="index.html"><span class="admin-side-icon">↗</span> Ver sitio</a>
+    </aside>
+    <section class="admin-content" id="overview">
+      <div class="admin-heading-row"><div><p class="eyebrow eyebrow-dark">PANEL DE CONTROL</p><h1>Hola, <span id="adminGreeting">admin</span>.</h1><p>Resumen de las cuentas con acceso a Menumi.</p></div><div class="admin-user-pill"><span class="admin-avatar" id="adminAvatar">M</span><span id="adminUserLabel">Administración</span><button class="admin-logout" id="logoutButton" type="button">Cerrar sesión</button></div></div>
+      <div class="admin-stats">
+        <article class="stat-card"><span class="stat-label">Cuentas de administración</span><strong class="stat-value" id="userCount">—</strong><span class="stat-note">Usuarios registrados</span></article>
+        <article class="stat-card"><span class="stat-label">Estado de sesión</span><strong class="stat-value stat-state">Activa</strong><span class="stat-note">Sesión protegida por servidor</span></article>
+        <article class="stat-card"><span class="stat-label">Base de datos</span><strong class="stat-value stat-state">Conectada</strong><span class="stat-note">MongoDB Atlas · menumi</span></article>
+      </div>
+      <section class="admin-panel" id="users">
+        <div class="admin-panel-head"><div><h2>Usuarios</h2><p>Las contraseñas nunca se muestran en el panel.</p></div><span class="role-pill">ACCESO ADMIN</span></div>
+        <div class="table-wrap"><table class="account-table"><thead><tr><th>Cuenta</th><th>Rol</th><th>Estado</th><th>Contraseña</th></tr></thead><tbody id="usersTable"></tbody></table></div>
+      </section>
+      <div class="security-note"><span aria-hidden="true">✳</span><span><strong>Acceso protegido.</strong> Las contraseñas se validan en el servidor y se guardan con hash en MongoDB. No se envían al navegador después del inicio de sesión.</span></div>
+      <p class="admin-api-error" id="adminApiError" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <script src="admin.js" defer></script>
+</body>
+</html>
