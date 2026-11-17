@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f6efe5">
+    <meta name="description" content="Descubre el menú de Menumi: cocina asiático-colombiana a domicilio en Bogotá.">
     <title>Menú — Menumi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20261117">
 </head>
 <body class="paper-body">
 
-    <nav class="nav nav-dark">
-        <a href="index.html" class="logo"><img src="icon-menumi.png" class="logo-icon" alt="Menumi">menumi</a>
-        <div class="nav-links">
-            <a href="index.html">Inicio</a>
-            <a href="nosotros.html">Nosotros</a>
-            <a href="menu.html">Menú</a>
-            <a href="contacto.html">Contacto</a>
-        </div>
-    </nav>
+    <header class="site-header">
+        <a class="brand" href="index.html" aria-label="Menumi, inicio"><img src="icon-menumi.png" alt=""><span>menumi</span></a>
+        <nav class="site-nav" aria-label="Navegación principal"><a href="index.html">Inicio</a><a href="nosotros.html">Nosotros</a><a class="active" href="menu.html">Menú</a><a href="contacto.html">Contacto</a></nav>
+        <a class="header-order" href="https://wa.me/573133971638" target="_blank" rel="noopener">Pedir ahora <span>↗</span></a>
+    </header>
 
     <header class="menu-header">
         <span class="eyebrow eyebrow-dark">EL MENÚ</span>
-        <h1 class="menu-title">Lo que se sirve en Menumi</h1>
+            <h1 class="menu-title">Una carta para<br><em>cruzar fronteras.</em></h1>
         <p class="menu-intro">Cada plato tiene un pie en Colombia y otro en Asia. Ninguno pide permiso para estar ahí.</p>
     </header>
 
@@ -31,7 +29,7 @@
         <p><strong>¿Antojo en casa?</strong> Hacemos domicilios en Bogotá.</p>
         <div class="delivery-actions">
             <a href="https://wa.me/573133971638" class="btn-solid" target="_blank" rel="noopener">Pedir por WhatsApp</a>
-            <a href="#" class="btn-outline">Ver en Rappi</a>
+            <a href="contacto.html" class="btn-outline">Consulta cobertura</a>
         </div>
     </div>
 
@@ -244,7 +242,7 @@
             <h2 class="category-title">Para tomar</h2>
             <div class="dish-grid">
                 <div class="dish">
-                    <div class="dish-media corner-mask">
+                    <div class="dish-media">
                         <img src="lulada de yuzu.png" alt="Lulada de yuzu" loading="lazy">
                     </div>
                     <div class="dish-body">
@@ -258,7 +256,7 @@
                     </div>
                 </div>
                 <div class="dish">
-                    <div class="dish-media corner-mask">
+                    <div class="dish-media">
                         <img src="Te de panela.png" alt="Té de panela con jengibre" loading="lazy">
                     </div>
                     <div class="dish-body">
@@ -272,7 +270,7 @@
                     </div>
                 </div>
                 <div class="dish">
-                    <div class="dish-media corner-mask">
+                    <div class="dish-media">
                         <img src="cerveza casera.png" alt="Cerveza artesanal" loading="lazy">
                     </div>
                     <div class="dish-body">
@@ -293,7 +291,7 @@
     </main>
 
     <div class="cart-widget">
-        <button class="cart-toggle" id="cartToggle">
+        <button class="cart-toggle" id="cartToggle" type="button" aria-expanded="false" aria-controls="cartPanel">
             <span>Carrito</span>
             <span class="cart-count" id="cartCount">0</span>
         </button>
@@ -310,6 +308,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <footer class="site-footer"><a class="brand footer-brand" href="index.html"><img src="icon-menumi.png" alt=""><span>menumi</span></a><span>Cocina asiático-colombiana · Bogotá</span><div><a href="nosotros.html">Nuestra historia</a><a href="contacto.html">Contacto</a><a class="footer-admin" href="admin.html">Administración</a></div></footer>
+    <script src="script.js" defer></script>
 </body>
 </html>

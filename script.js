@@ -1,118 +1,91 @@
+document.documentElement.classList.add('js');
+
 document.addEventListener('DOMContentLoaded', () => {
-    let cart = [];
+  const count = document.getElementById('cartCount');
+  const panel = document.getElementById('cartPanel');
+  const items = document.getElementById('cartItems');
+  const totalLabel = document.getElementById('cartTotal');
+  const toggle = document.getElementById('cartToggle');
+  const clear = document.getElementById('cartClear');
+  const orderLink = document.getElementById('waOrderLink');
+  const cart = [];
+  const formatCOP = (amount) => '$' + amount.toLocaleString('es-CO');
 
-    const cartCountEl = document.getElementById('cartCount');
-    const cartPanel = document.getElementById('cartPanel');
-    const cartItemsEl = document.getElementById('cartItems');
-    const cartTotalEl = document.getElementById('cartTotal');
-    const cartToggle = document.getElementById('cartToggle');
-    const cartClearBtn = document.getElementById('cartClear');
-    const waLink = document.getElementById('waOrderLink');
+  if (toggle && panel && count && items && totalLabel && orderLink) {
+    const renderCart = () => {
+      count.textContent = String(cart.length);
+      items.replaceChildren();
 
-    // Si esta página no tiene carrito (ej. Inicio o Nosotros), no hace nada más.
-    if (cartToggle) {
-        function formatCOP(n) {
-            return '$' + n.toLocaleString('es-CO');
-        }
+      if (!cart.length) {
+        const empty = document.createElement('p');
+        empty.className = 'cart-empty';
+        empty.textContent = 'Aún no has agregado nada.';
+        items.append(empty);
+      }
 
-        function renderCart() {
-            cartCountEl.textContent = cart.length;
-            cartItemsEl.innerHTML = '';
-
-            if (cart.length === 0) {
-                cartItemsEl.innerHTML = '<p class="cart-empty">Aún no has agregado nada.</p>';
-            }
-
-            let total = 0;
-            cart.forEach((item, index) => {
-                total += item.price;
-                const row = document.createElement('div');
-                row.className = 'cart-row';
-                row.innerHTML = `
-                    <div class="cart-row-info">
-                        <span class="cart-row-name">${item.name}</span>
-                        <span class="cart-row-price">${formatCOP(item.price)}</span>
-                    </div>
-                    <button class="cart-row-remove" data-index="${index}" aria-label="Quitar ${item.name}">×</button>
-                `;
-                cartItemsEl.appendChild(row);
-            });
-
-            cartTotalEl.textContent = formatCOP(total);
-
-            const lines = cart.map((i) => `- ${i.name} (${formatCOP(i.price)})`).join('%0A');
-            const message = cart.length
-                ? `Hola Menumi, quiero pedir:%0A${lines}%0A%0ATotal: ${formatCOP(total)}`
-                : 'Hola Menumi, quiero hacer un pedido.';
-            waLink.href = `https://wa.me/573133971638?text=${message}`;
-
-            // Botones de quitar producto individual
-            cartItemsEl.querySelectorAll('.cart-row-remove').forEach((removeBtn) => {
-                removeBtn.addEventListener('click', () => {
-                    const idx = parseInt(removeBtn.dataset.index, 10);
-                    cart.splice(idx, 1);
-                    renderCart();
-                });
-            });
-        }
-
-        document.querySelectorAll('.dish-add').forEach((btn) => {
-            btn.addEventListener('click', () => {
-                const name = btn.dataset.item;
-                const price = parseInt(btn.dataset.price, 10);
-                cart.push({ name, price });
-                renderCart();
-
-                const originalText = btn.textContent;
-                btn.textContent = 'Agregado ✓';
-                setTimeout(() => {
-                    btn.textContent = originalText;
-                }, 900);
-            });
+      let total = 0;
+      cart.forEach((item, index) => {
+        total += item.price;
+        const row = document.createElement('div');
+        row.className = 'cart-row';
+        const info = document.createElement('div');
+        info.className = 'cart-row-info';
+        const name = document.createElement('span');
+        name.className = 'cart-row-name';
+        name.textContent = item.name;
+        const price = document.createElement('span');
+        price.className = 'cart-row-price';
+        price.textContent = formatCOP(item.price);
+        const remove = document.createElement('button');
+        remove.className = 'cart-row-remove';
+        remove.type = 'button';
+        remove.setAttribute('aria-label', `Quitar ${item.name}`);
+        remove.textContent = '×';
+        remove.addEventListener('click', () => {
+          cart.splice(index, 1);
+          renderCart();
         });
+        info.append(name, price);
+        row.append(info, remove);
+        items.append(row);
+      });
 
-        cartToggle.addEventListener('click', () => {
-            cartPanel.classList.toggle('open');
-        });
+      totalLabel.textContent = formatCOP(total);
+      const lines = cart.map((item) => `• ${item.name} (${formatCOP(item.price)})`).join('\n');
+      const message = cart.length ? `Hola Menumi, quiero pedir:\n${lines}\n\nTotal: ${formatCOP(total)}` : 'Hola Menumi, quiero hacer un pedido.';
+      orderLink.href = `https://wa.me/573133971638?text=${encodeURIComponent(message)}`;
+    };
 
-        if (cartClearBtn) {
-            cartClearBtn.addEventListener('click', () => {
-                cart = [];
-                renderCart();
-            });
-        }
-
+    document.querySelectorAll('.dish-add').forEach((button) => {
+      button.addEventListener('click', () => {
+        cart.push({ name: button.dataset.item, price: Number(button.dataset.price) });
         renderCart();
-    }
+        const previous = button.textContent;
+        button.textContent = 'Agregado ✓';
+        window.setTimeout(() => { button.textContent = previous; }, 1100);
+      });
+    });
 
-    // Animación de aparición de las tarjetas del menú, cada vez que entran o salen de la vista
-    const dishes = document.querySelectorAll('.dish');
-    if (dishes.length) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                entry.target.classList.toggle('in-view', entry.isIntersecting);
-            });
-        }, { threshold: 0.15 });
+    toggle.addEventListener('click', () => {
+      const isOpen = panel.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    clear?.addEventListener('click', () => { cart.length = 0; renderCart(); });
+    renderCart();
+  }
 
-        dishes.forEach((dish) => observer.observe(dish));
-    }
-
-    // Fotos interactivas (Inicio y Contacto): en celular (sin hover), un toque las abre y otro afuera las cierra
-    const interactivePhotos = document.querySelectorAll('.signature-photo, .contact-photo');
-    if (interactivePhotos.length) {
-        interactivePhotos.forEach((photo) => {
-            photo.addEventListener('click', (e) => {
-                if (e.target.closest('.sig-btn')) return;
-                photo.classList.toggle('is-open');
-            });
-        });
-
-        document.addEventListener('click', (e) => {
-            interactivePhotos.forEach((photo) => {
-                if (!photo.contains(e.target)) {
-                    photo.classList.remove('is-open');
-                }
-            });
-        });
-    }
+  const animatedItems = document.querySelectorAll('.reveal, .dish');
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver((entries, currentObserver) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(entry.target.classList.contains('dish') ? 'in-view' : 'is-visible');
+          currentObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -24px 0px' });
+    animatedItems.forEach((element) => observer.observe(element));
+  } else {
+    animatedItems.forEach((element) => element.classList.add(element.classList.contains('dish') ? 'in-view' : 'is-visible'));
+  }
 });
