@@ -15,6 +15,18 @@ Configura estas variables en el panel privado del host. Para desarrollo local, c
 
 No guardes estas variables en GitHub como archivos ni en el código del sitio. En Atlas, limita Network Access a la IP del host donde se ejecute Menumi; evita permitir todas las direcciones.
 
+## Despliegue en Fly.io
+
+El repositorio incluye `Dockerfile` y `fly.toml` para ejecutar el sitio y el API en una sola app en la región `gru` (São Paulo). Requiere una cuenta Fly.io con facturación habilitada. La configuración deja una máquina de 512 MB encendida para evitar esperas al abrir el sitio.
+
+1. Instala `flyctl` e inicia sesión. Comprueba que `menumi-production` esté disponible; si no, cambia `app` en `fly.toml` por un nombre único.
+2. Crea la app con `fly apps create menumi-production`.
+3. Asigna una IP de salida fija con `fly ips allocate-egress -r gru`. En MongoDB Atlas, añade esa IP a Network Access y usa un usuario de aplicación con permiso `readWrite` únicamente en `menumi`.
+4. Define los secretos en Fly con `fly secrets set MONGODB_URI="..." SESSION_SECRET="..." ADMIN_JUAN_SUAREZ_PASSWORD="..." ADMIN_JUAN_PUENTES_PASSWORD="..."`. No pegues los valores en el repositorio ni en chats.
+5. Despliega con `fly deploy` y ejecuta una vez `fly ssh console -C "npm run seed:admins"` para crear las cuentas; luego visita `https://menumi-production.fly.dev/admin.html`.
+
+Fly publica precios variables por región y consumo. A la tarifa publicada consultada, una máquina shared-cpu-1x de 512 MB encendida todo el mes cuesta alrededor de US$3.99/mes, y la IP saliente fija US$3.60/mes; transferencia y otros cargos se facturan aparte. Revisa el total en Fly antes de activar el servicio.
+
 ## Crear las dos cuentas
 
 1. Instala dependencias con `npm install`.
