@@ -152,7 +152,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .cart-row-remove { border: 0; background: transparent; color: var(--red); cursor: pointer; font-size: 17px; }
 .cart-total-row { display: flex; justify-content: space-between; margin-top: 14px; padding-top: 13px; border-top: 1px solid var(--line); font-size: 11px; font-weight: 700; }
 .cart-clear { width: 100%; margin-top: 10px; padding: 9px; border: 1px solid var(--line); background: transparent; color: var(--muted); cursor: pointer; font-size: 9px; text-transform: uppercase; }
-.cart-checkout { display: block; margin-top: 9px; padding: 13px; background: var(--green); color: white; text-align: center; text-decoration: none; font-size: 10px; font-weight: 700; }
+.cart-checkout { display: block; width: 100%; margin-top: 9px; padding: 13px; border: 0; background: var(--green); color: white; text-align: center; text-decoration: none; font: inherit; font-size: 10px; font-weight: 700; cursor: pointer; }
+.checkout-fields { display: grid; gap: 7px; margin: 13px 0; }
+.checkout-fields label { color: var(--muted); font-size: 9px; font-weight: 700; }
+.checkout-fields input, .checkout-fields textarea { width: 100%; padding: 9px 10px; border: 1px solid var(--line); border-radius: 2px; background: #fffaf4; color: var(--ink); font: inherit; font-size: 10px; }
+.checkout-fields textarea { resize: vertical; }
+.checkout-message { margin: 8px 0 0; color: var(--red); font-size: 9px; line-height: 1.5; }
 
 /* Story and contact */
 .about { padding: 0 clamp(22px,7vw,96px) 65px; }
@@ -207,6 +212,16 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .field label { color: var(--ink); font-size: 10px; font-weight: 700; }
 .field input { width: 100%; min-height: 46px; padding: 0 13px; border: 1px solid rgba(38,24,19,.18); border-radius: 3px; outline: 0; background: #fffaf4; color: var(--ink); font-size: 12px; }
 .field input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(53,95,73,.1); }
+.field select, .field textarea { width: 100%; min-height: 44px; padding: 11px 13px; border: 1px solid rgba(38,24,19,.18); border-radius: 3px; outline: 0; background: #fffaf4; color: var(--ink); font: inherit; font-size: 12px; }
+.field textarea { resize: vertical; }
+.field select:focus, .field textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(53,95,73,.1); }
+.auth-switch { margin: 18px 0 0 !important; text-align: center; }
+.auth-switch button { padding: 0; border: 0; background: transparent; color: var(--red); cursor: pointer; font: inherit; font-weight: 700; }
+.signup-form { max-height: calc(100vh - 110px); overflow-y: auto; padding-block: 24px; }
+.choice-set { display: flex; flex-wrap: wrap; gap: 9px 15px; margin: 16px 0; padding: 12px; border: 1px solid var(--line); }
+.choice-set legend { padding: 0 6px; color: var(--ink); font-size: 10px; font-weight: 700; }
+.choice-set label { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 10px; }
+.choice-set input { accent-color: var(--red); }
 .login-submit { width: 100%; margin-top: 11px; cursor: pointer; }
 .login-error { min-height: 18px; margin: 12px 0 0 !important; color: var(--red) !important; font-size: 10px !important; }
 .admin-shell { display: grid; min-height: calc(100vh - 74px); grid-template-columns: 235px 1fr; }
@@ -221,7 +236,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .admin-heading-row p { margin: 6px 0 0; color: var(--muted); font-size: 11px; }
 .admin-user-pill { display: flex; align-items: center; gap: 9px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 99px; color: var(--ink); font-size: 10px; }
 .admin-avatar { display: grid; width: 25px; height: 25px; place-items: center; border-radius: 50%; background: var(--red); color: var(--cream); font-family: var(--serif); }
-.admin-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 24px; }
+.admin-stats { display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap: 14px; margin-bottom: 24px; }
 .stat-card { padding: 18px; border: 1px solid var(--line); background: var(--cream); }
 .stat-label { color: var(--muted); font-size: 9px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
 .stat-value { margin-top: 13px; color: var(--red); font-family: var(--serif); font-size: 32px; }
@@ -233,6 +248,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .account-table { width: 100%; border-collapse: collapse; text-align: left; }
 .account-table th { padding: 12px 20px; color: var(--muted); font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
 .account-table td { padding: 15px 20px; border-top: 1px solid rgba(38,24,19,.08); font-size: 10px; }
+.account-table td { max-width: 280px; overflow-wrap: anywhere; line-height: 1.6; }
+.orders-table { min-width: 920px; }
+.customer-orders { display: grid; gap: 10px; padding: 18px; }
+.customer-order { padding: 14px; border: 1px solid var(--line); background: #fffaf4; color: var(--muted); font-size: 11px; line-height: 1.7; }
+.customer-order strong { color: var(--ink); }
+.taste-form { padding: 16px 20px 22px; }
+.taste-form .choice-set { max-width: 740px; }
+.taste-form .field { max-width: 420px; }
+.empty-orders { margin: 0; color: var(--muted); font-size: 11px; }
 .account-name { display: flex; align-items: center; gap: 9px; font-weight: 700; }
 .account-avatar { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: #e8d8c7; color: var(--red); font-family: var(--serif); font-size: 12px; }
 .role-pill, .status-pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 9px; border-radius: 99px; background: rgba(53,95,73,.09); color: var(--green); font-size: 8px; font-weight: 700; }
@@ -330,7 +354,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .admin-login-wrap { grid-template-columns: 1fr; }
   .admin-login-art { min-height: 250px; padding: 30px 24px; }
   .admin-login-art h1 { font-size: 3.6rem; }
-  .admin-login-card { padding: 42px 22px 60px; }
+  .admin-login-card { align-items: flex-start; padding: 42px 22px 60px; }
+  .signup-form { max-height: none; padding: 0; }
   .admin-shell { grid-template-columns: 1fr; }
   .admin-sidebar { display: flex; gap: 8px; padding: 10px 16px; border-right: 0; border-bottom: 1px solid var(--line); }
   .admin-sidebar-label { display: none; }

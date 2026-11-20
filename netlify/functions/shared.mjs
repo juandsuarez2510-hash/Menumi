@@ -37,13 +37,13 @@ export async function ensureAdminAccounts() {
     if (!password) throw new Error(`Falta el secreto ${account.passwordEnv}.`);
 
     const usernameNormalized = normalizeUsername(account.username);
-    const existing = await db.sql`SELECT id FROM admins WHERE username_normalized = ${usernameNormalized} LIMIT 1`;
+    const existing = await db.sql`SELECT id FROM users WHERE username_normalized = ${usernameNormalized} LIMIT 1`;
     if (existing.length) continue;
 
     const passwordHash = await bcrypt.hash(password, 12);
     await db.sql`
-      INSERT INTO admins (id, username, username_normalized, password_hash, role, is_active)
-      VALUES (${randomUUID()}, ${account.username}, ${usernameNormalized}, ${passwordHash}, 'admin', TRUE)
+      INSERT INTO users (id, username, username_normalized, password_hash, role, is_active, full_name)
+      VALUES (${randomUUID()}, ${account.username}, ${usernameNormalized}, ${passwordHash}, 'admin', TRUE, ${account.username})
       ON CONFLICT (username_normalized) DO NOTHING
     `;
   }
@@ -55,7 +55,7 @@ export async function createSession(user, request) {
   const token = randomBytes(32).toString('base64url');
   const expiresAt = new Date(Date.now() + SESSION_TTL_MS);
   await db.sql`
-    INSERT INTO admin_sessions (token_hash, admin_id, expires_at)
+    INSERT INTO user_sessions (token_hash, user_id, expires_at)
     VALUES (${hashSessionToken(token)}, ${user.id}, ${expiresAt})
   `;
   const secure = new URL(request.url).protocol === 'https:';
@@ -70,15 +70,16 @@ export async function readSession(request) {
   const token = cookie.slice(SESSION_COOKIE.length + 1);
   if (!/^[A-Za-z0-9_-]{40,50}$/.test(token)) return null;
   const sessions = await db.sql`
-    SELECT a.id, a.username, a.role
-    FROM admin_sessions s
-    JOIN admins a ON a.id = s.admin_id
+    SELECT u.id, u.username, u.full_name, u.email, u.role, u.favorite_cuisines,
+      u.dietary_preferences, u.spice_level, u.profile_notes, u.is_active
+    FROM user_sessions s
+    JOIN users u ON u.id = s.user_id
     WHERE s.token_hash = ${hashSessionToken(token)}
       AND s.expires_at > NOW()
-      AND a.is_active = TRUE
+      AND u.is_active = TRUE
     LIMIT 1
   `;
-  return sessions[0] ? { id: String(sessions[0].id), username: sessions[0].username, role: sessions[0].role } : null;
+  return sessions[0] ? publicUser(sessions[0]) : null;
 }
 
 export async function clearSession(request) {
@@ -87,10 +88,10 @@ export async function clearSession(request) {
   if (cookie) {
     const token = cookie.slice(SESSION_COOKIE.length + 1);
     if (/^[A-Za-z0-9_-]{40,50}$/.test(token)) {
-      await db.sql`DELETE FROM admin_sessions WHERE token_hash = ${hashSessionToken(token)}`;
+      await db.sql`DELETE FROM user_sessions WHERE token_hash = ${hashSessionToken(token)}`;
     }
   }
-  await db.sql`DELETE FROM admin_sessions WHERE expires_at < NOW()`;
+  await db.sql`DELETE FROM user_sessions WHERE expires_at < NOW()`;
   const secure = new URL(request.url).protocol === 'https:';
   return `${SESSION_COOKIE}=; Path=/; HttpOnly; SameSite=Strict; Max-Age=0${secure ? '; Secure' : ''}`;
 }
@@ -99,7 +100,13 @@ export function publicUser(user) {
   return {
     id: String(user.id),
     username: user.username,
+    fullName: user.full_name || user.username,
+    email: user.email || '',
     role: user.role,
     active: user.is_active !== false,
+    favoriteCuisines: user.favorite_cuisines || [],
+    dietaryPreferences: user.dietary_preferences || [],
+    spiceLevel: user.spice_level ?? 2,
+    profileNotes: user.profile_notes || '',
   };
 }
