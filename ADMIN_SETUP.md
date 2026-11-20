@@ -2,16 +2,6 @@
 
 El sitio estático y el panel se publican en Netlify. Las rutas `/api/*` son funciones serverless y las cuentas se guardan en Netlify Database (Postgres). Esto evita una IP de salida de pago y no requiere abrir MongoDB Atlas a todo Internet. La base Atlas creada anteriormente queda sin uso; como aún no se habían cargado cuentas ni datos, no hay registros que migrar.
 
-## Publicar el proyecto
-
-1. Netlify publica el proyecto `menumi-juandsuarez2510` en `https://menumi-juandsuarez2510.netlify.app`.
-2. El proyecto usa `netlify.toml`: ejecuta `npm run build`, publica `dist/` y despliega `netlify/functions/`.
-3. Netlify Database está habilitada. La migración `0001_create_admins.sql` crea la tabla de administradores.
-4. Las variables privadas ya están configuradas en producción:
-   - `ADMIN_JUAN_SUAREZ_PASSWORD`: contraseña inicial de Juan suarez.
-   - `ADMIN_JUAN_PUENTES_PASSWORD`: contraseña inicial de Juan puentes.
-5. Abre [el panel de administración](https://menumi-juandsuarez2510.netlify.app/admin.html). Al primer inicio de sesión, las dos cuentas se insertan con hashes bcrypt; si ya existen, se conservan.
-
 No guardes estos valores en GitHub, en archivos `.env` compartidos ni en el navegador. Netlify Database entrega la conexión internamente a las funciones. Las sesiones usan tokens aleatorios de corta duración, guardados como hash en la base y protegidos por una cookie `HttpOnly`.
 
 ## Nivel gratuito
