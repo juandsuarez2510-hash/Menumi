@@ -62,6 +62,18 @@ document.addEventListener('DOMContentLoaded', () => {
       usersTable.replaceChildren();
       ordersTable.replaceChildren();
 
+      const emptyRow = (table, columns, message) => {
+        const row = document.createElement('tr');
+        const empty = document.createElement('td');
+        empty.colSpan = columns;
+        empty.className = 'table-empty';
+        empty.textContent = message;
+        row.append(empty);
+        table.append(row);
+      };
+      if (!users.length) emptyRow(usersTable, 6, 'Aún no hay cuentas de clientes. Aparecerán cuando alguien se registre.');
+      if (!orders.length) emptyRow(ordersTable, 6, 'Aún no hay pedidos registrados. Se mostrarán cuando un cliente ordene desde el menú.');
+
       for (const user of users) {
         const row = document.createElement('tr');
         const person = cell(user.fullName);

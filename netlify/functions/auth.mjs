@@ -1,3 +1,4 @@
+import { randomUUID } from 'node:crypto';
 import bcrypt from 'bcryptjs';
 import {
   clearSession,
@@ -50,7 +51,7 @@ export default async function handler(request) {
 
       await db.sql`UPDATE users SET last_login_at = NOW() WHERE id = ${account.id}`;
       const user = publicUser(account);
-      return jsonResponse({ user }, 200, { 'Set-Cookie': createSession(user, request) });
+      return jsonResponse({ user }, 200, { 'Set-Cookie': await createSession(user, request) });
     } catch (error) {
       console.error('Menumi login failed:', error.message);
       return jsonResponse({ error: 'No fue posible iniciar sesión. Intenta de nuevo.' }, 500);
@@ -94,7 +95,7 @@ export default async function handler(request) {
 
       const user = publicUser(rows[0]);
       await db.sql`UPDATE users SET last_login_at = NOW() WHERE id = ${rows[0].id}`;
-      return jsonResponse({ user }, 201, { 'Set-Cookie': createSession(user, request) });
+      return jsonResponse({ user }, 201, { 'Set-Cookie': await createSession(user, request) });
     } catch (error) {
       console.error('Menumi registration failed:', error.message);
       return jsonResponse({ error: 'No fue posible crear la cuenta. Intenta de nuevo.' }, 500);
