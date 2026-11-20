@@ -10,4 +10,4 @@ Netlify Free incluye 300 créditos mensuales con límite estricto; no activa rec
 
 ## URL
 
-La URL pública es [https://menumi-juandsuarez2510.netlify.app](https://menumi-juandsuarez2510.netlify.app). GitHub Pages redirige al sitio de Netlify cuando publique los cambios en `main`.
+La URL pública es [https://menumi-cocina.netlify.app](https://menumi-cocina.netlify.app). GitHub Pages redirige al sitio de Netlify cuando publique los cambios en `main`.

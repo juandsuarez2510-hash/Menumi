@@ -5,5 +5,5 @@
   if (!isMenumiPages || !isMenumiPath) return;
 
   const path = window.location.pathname.replace(/^\/Menumi/, '') || '/';
-  window.location.replace(`https://menumi-juandsuarez2510.netlify.app${path}${window.location.search}${window.location.hash}`);
+  window.location.replace(`https://menumi-cocina.netlify.app${path}${window.location.search}${window.location.hash}`);
 })();
