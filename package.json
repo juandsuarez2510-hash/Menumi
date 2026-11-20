@@ -6,6 +6,10 @@
   "engines": {
     "node": ">=22.13.0"
   },
+  "allowScripts": {
+    "netlify-cli@27.20.1": true,
+    "esbuild": true
+  },
   "scripts": {
     "build": "node scripts/build-static.cjs",
     "dev": "netlify dev"

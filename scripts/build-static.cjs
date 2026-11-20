@@ -11,7 +11,7 @@ const publicFiles = [
   'menu.html',
   'nosotros.html',
   '_headers',
-  '_headers',
+  'pages-redirect.js',
   'script.js',
   'styles.css',
 ];

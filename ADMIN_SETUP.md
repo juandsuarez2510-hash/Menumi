@@ -4,13 +4,13 @@ El sitio estático y el panel se publican en Netlify. Las rutas `/api/*` son fun
 
 ## Publicar el proyecto
 
-1. Crea un proyecto en Netlify conectado al repositorio `juandsuarez2510-hash/Menumi`, con `main` como rama de producción.
-2. Netlify usa `netlify.toml`: ejecuta `npm run build`, publica `dist/` y despliega `netlify/functions/`.
-3. En el proyecto, crea o habilita Netlify Database desde **Data & Storage → Database**. La migración `0001_create_admins.sql` crea la tabla de administradores.
-4. En **Project configuration → Environment variables**, define:
+1. Netlify publica el proyecto `menumi-juandsuarez2510` en `https://menumi-juandsuarez2510.netlify.app`.
+2. El proyecto usa `netlify.toml`: ejecuta `npm run build`, publica `dist/` y despliega `netlify/functions/`.
+3. Netlify Database está habilitada. La migración `0001_create_admins.sql` crea la tabla de administradores.
+4. Las variables privadas ya están configuradas en producción:
    - `ADMIN_JUAN_SUAREZ_PASSWORD`: contraseña inicial de Juan suarez.
    - `ADMIN_JUAN_PUENTES_PASSWORD`: contraseña inicial de Juan puentes.
-5. Publica un nuevo deploy y abre `/admin.html`. Al primer inicio de sesión, las dos cuentas se insertan con hashes bcrypt; si ya existen, se conservan.
+5. Abre [el panel de administración](https://menumi-juandsuarez2510.netlify.app/admin.html). Al primer inicio de sesión, las dos cuentas se insertan con hashes bcrypt; si ya existen, se conservan.
 
 No guardes estos valores en GitHub, en archivos `.env` compartidos ni en el navegador. Netlify Database entrega la conexión internamente a las funciones. Las sesiones usan tokens aleatorios de corta duración, guardados como hash en la base y protegidos por una cookie `HttpOnly`.
 
@@ -20,4 +20,4 @@ Netlify Free incluye 300 créditos mensuales con límite estricto; no activa rec
 
 ## URL
 
-Después de crear el proyecto, sustituye el enlace de GitHub Pages por la URL `https://<nombre-del-proyecto>.netlify.app`. No actives la redirección desde GitHub Pages antes de que el primer deploy de Netlify esté publicado.
+La URL pública es [https://menumi-juandsuarez2510.netlify.app](https://menumi-juandsuarez2510.netlify.app). GitHub Pages redirige al sitio de Netlify cuando publique los cambios en `main`.
