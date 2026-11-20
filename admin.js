@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         usersTable.append(row);
       }
     } catch (error) {
-      apiError.textContent = 'El panel necesita el servidor Node.js conectado a MongoDB. Configura las variables secretas y despliega el backend para iniciar sesión.';
+      apiError.textContent = 'El panel no pudo conectarse. Intenta de nuevo en unos minutos.';
       console.error(error);
     }
   }
@@ -87,14 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok && [404, 405].includes(response.status)) {
-        throw new Error('Este sitio necesita el servidor Node.js para conectarse a MongoDB. GitHub Pages por sí solo no ejecuta el acceso de administración.');
+        throw new Error('El servicio de administración no está disponible. Intenta de nuevo en unos minutos.');
       }
       if (!response.ok) throw new Error(data.error || 'No fue posible iniciar sesión.');
       loginForm.reset();
       showDashboard(data.user);
     } catch (error) {
       loginError.textContent = error.message.includes('Failed to fetch')
-        ? 'El servidor de administración aún no está conectado. Revisa el despliegue de Node.js.'
+        ? 'El servicio de administración aún no está disponible. Revisa el despliegue en Netlify.'
         : error.message;
     } finally {
       loginButton.disabled = false;

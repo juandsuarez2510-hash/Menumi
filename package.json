@@ -3,22 +3,18 @@
   "version": "1.0.0",
   "private": true,
   "description": "Sitio web y panel de administración de Menumi",
-  "main": "server.js",
   "engines": {
-    "node": ">=20"
+    "node": ">=22.13.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "seed:admins": "node seed-admins.js"
+    "build": "node scripts/build-static.cjs",
+    "dev": "netlify dev"
   },
   "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "connect-mongo": "^5.1.0",
-    "dotenv": "^16.4.7",
-    "express": "^5.1.0",
-    "express-rate-limit": "^7.5.0",
-    "express-session": "^1.18.2",
-    "helmet": "^8.0.0",
-    "mongodb": "^6.13.0"
+    "@netlify/database": "^2.0.3",
+    "bcryptjs": "^2.4.3"
+  },
+  "devDependencies": {
+    "netlify-cli": "^27.20.1"
   }
 }
